@@ -89,6 +89,9 @@
     .proj-card:last-child { border-bottom: none; }
     .proj-card:hover { background: var(--bg2); }
 
+    /* full-width card (no browser window) */
+    .proj-card-full { grid-template-columns: 1fr; }
+
     /* info panel (left) */
     .p-info { padding: 36px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); }
     .p-num { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--dim); margin-bottom: 10px; }
@@ -381,7 +384,7 @@
       </div>
     </div>
 
-    <!-- 2. Mobile Mechanic — info left, terminal right -->
+    <!-- 2. Mobile Mechanic — info left, live demo iframe right -->
     <div class="proj-card">
       <div class="p-info">
         <div class="p-num">02</div>
@@ -399,21 +402,10 @@
       <div class="browser">
         <div class="b-chrome">
           <div class="b-dots"><span></span><span></span><span></span></div>
-          <span class="b-url">mobile-mechanic-website-cetb.vercel.app — Live</span>
+          <span class="b-url">mobile-mechanic-website-cetb.vercel.app</span>
         </div>
         <div class="b-body">
-          <div class="d-screen">
-            <div class="d-line"><span class="d-p">$</span> <span class="d-hi">npm run build</span></div>
-            <div class="d-line"><span class="d-ok">✓</span> Compiled successfully</div>
-            <div class="d-divider"></div>
-            <div class="d-line"><span class="d-p">$</span> <span class="d-hi">npx playwright test</span></div>
-            <div class="d-line"><span class="d-ok">✓</span> 12 passed (service area lookup)</div>
-            <div class="d-line"><span class="d-ok">✓</span>  8 passed (appointment scheduling)</div>
-            <div class="d-line"><span class="d-ok">✓</span>  6 passed (booking confirmation)</div>
-            <div class="d-divider"></div>
-            <div class="d-line"><span class="d-p">$</span> <span class="d-hi">vercel --prod</span></div>
-            <div class="d-line"><span class="d-ok">✓</span> Deployed → mobile-mechanic.vercel.app</div>
-          </div>
+          <iframe src="https://mobile-mechanic-website-cetb.vercel.app" loading="lazy" title="Mobile Mechanic Platform" style="width:100%;height:100%;border:none;transform:scale(0.75);transform-origin:top left;width:133%;height:133%;"></iframe>
         </div>
       </div>
     </div>
@@ -423,7 +415,7 @@
       <div class="p-info">
         <div class="p-num">03</div>
         <h3 class="p-title">AI-Powered SOW Editor</h3>
-        <p class="p-desc">Paste a meeting transcript and Claude auto-fills a Statement of Work template by extracting entities (client, scope, timeline, deliverables). An AI chat panel on the right then assists with the remaining fields — making educated guesses the user can accept, deny, or edit in place. Export to DOCX or PDF when done.</p>
+        <p class="p-desc">React-based Statement of Work editor with real-time Claude AI assistance via AWS Bedrock. Rich text editing with Slate.js, inline AI suggestions, document state management with Zustand, change tracking, undo/redo, and PDF/DOCX export.</p>
         <div class="p-tags">
           <span class="tag">React</span><span class="tag">Slate.js</span><span class="tag">Claude AI</span>
           <span class="tag">AWS Bedrock</span><span class="tag">Zustand</span>
