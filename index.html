@@ -91,17 +91,12 @@
     #home { position: relative; }
 
     /* ── about ── */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .about-text p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 16px; }
-    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 40px; }
-    .stat { background: var(--bg); padding: 24px 20px; text-align: center; }
-    .stat-n { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.03em; display: block; margin-bottom: 4px; }
-    .stat-l { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
-    .edu-block { border: 1px solid var(--border); padding: 28px; }
-    .edu-block h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
-    .edu-block .deg { font-size: 0.82rem; color: var(--muted); margin-bottom: 24px; line-height: 1.5; }
-    .edu-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 0.82rem; color: var(--muted); }
-    .edu-row::before { content: '—'; color: var(--dim); flex-shrink: 0; margin-top: 1px; }
+    .about-intro { color: var(--muted); font-size: 0.9rem; line-height: 1.8; max-width: 680px; margin-bottom: 40px; }
+    .about-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .abox { background: var(--bg); padding: 28px; transition: background 0.2s; }
+    .abox:hover { background: var(--bg2); }
+    .abox-label { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .abox p { font-size: 0.85rem; color: var(--muted); line-height: 1.75; }
 
     /* ── skills ── */
     #skills { border-top: 1px solid var(--border); }
@@ -112,20 +107,6 @@
     .tag { font-family: 'Fira Code', monospace; font-size: 0.72rem; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); border-radius: 3px; transition: 0.2s; cursor: default; }
     .tag:hover { border-color: var(--dim); color: var(--text); }
 
-    /* ── experience ── */
-    #experience { border-top: 1px solid var(--border); }
-    .exp-list { margin-top: 48px; border: 1px solid var(--border); }
-    .exp-item { padding: 32px 36px; border-bottom: 1px solid var(--border); transition: background 0.2s; }
-    .exp-item:last-child { border-bottom: none; }
-    .exp-item:hover { background: var(--bg2); }
-    .exp-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 4px; }
-    .exp-role { font-size: 0.95rem; font-weight: 500; }
-    .exp-date { font-family: 'Fira Code', monospace; font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
-    .exp-company { font-size: 0.82rem; color: var(--muted); margin-bottom: 20px; }
-    .exp-bullets { list-style: none; }
-    .exp-bullets li { position: relative; padding-left: 16px; font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 6px; }
-    .exp-bullets li::before { content: '·'; position: absolute; left: 0; color: var(--dim); font-size: 1.2rem; line-height: 1.4; }
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
 
     /* ── projects ── */
     #projects { border-top: 1px solid var(--border); }
@@ -232,7 +213,8 @@
     /* ── responsive ── */
     @media (max-width: 820px) {
       section { padding: 80px 24px; }
-      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-boxes { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -241,7 +223,6 @@
     }
     @media (max-width: 560px) {
       .projects-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: 1fr 1fr; }
       .hero-links { gap: 14px; }
     }
   </style>
@@ -255,7 +236,6 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#certifications">Certs</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -270,7 +250,6 @@
   <button class="mobile-close" id="mob-close">&#215;</button>
   <a href="#about" class="mob-link">About</a>
   <a href="#skills" class="mob-link">Skills</a>
-  <a href="#experience" class="mob-link">Experience</a>
   <a href="#projects" class="mob-link">Projects</a>
   <a href="#certifications" class="mob-link">Certs</a>
   <a href="#contact" class="mob-link">Contact</a>
@@ -305,38 +284,23 @@
 <!-- ── ABOUT ── -->
 <section id="about">
   <p class="label">About</p>
-  <div class="about-grid">
-    <div>
-      <p>I'm a Computer Science &amp; Mathematics student at UMass Amherst with a minor in Business Administration. I ship production GenAI systems — document editors, voice assistants, and RAG pipelines used by enterprise clients.</p>
-      <p>I currently contribute to autonomous-driving research at the UMass AI Lab, converting raw LiDAR sensor data into training datasets for perception models. I hold four cloud/AI certifications across AWS and Salesforce.</p>
-      <p>Outside of work I'm interested in hardware ML — my gesture music controller project combines an ESP32 microcontroller with a machine learning backend for real-time Spotify control.</p>
-      <div class="about-stats">
-        <div class="stat">
-          <span class="stat-n">3.76</span>
-          <span class="stat-l">GPA</span>
-        </div>
-        <div class="stat">
-          <span class="stat-n">6</span>
-          <span class="stat-l">Projects</span>
-        </div>
-        <div class="stat">
-          <span class="stat-n">4</span>
-          <span class="stat-l">Certs</span>
-        </div>
-      </div>
+  <p class="about-intro">I'm a recent graduate from the University of Massachusetts Amherst, where I studied Computer Science &amp; Mathematics. I build production AI systems and am currently making my Enterprise RAG pipeline fully agentic.</p>
+  <div class="about-boxes">
+    <div class="abox">
+      <div class="abox-label">Background</div>
+      <p>I graduated from UMass Amherst with a B.S. in Computer Science &amp; Mathematics and a minor in Business Administration, receiving the Chancellor's Award scholarship and graduating with a 3.76 GPA. I also served as a Teaching Assistant for Database Systems.</p>
     </div>
-    <div class="edu-block">
-      <p class="label" style="margin-bottom:16px;">Education</p>
-      <h3>University of Massachusetts Amherst</h3>
-      <p class="deg">
-        B.S. Computer Science &amp; Mathematics<br>
-        Minor in Business Administration<br>
-        <span style="font-family:'Fira Code',monospace;font-size:0.72rem;">Aug 2023 – May 2026</span>
-      </p>
-      <div class="edu-row">Chancellor's Award — $8,000/semester merit scholarship</div>
-      <div class="edu-row">Dean's List · GPA 3.76 / 4.0</div>
-      <div class="edu-row">Database Systems Teaching Assistant</div>
-      <div class="edu-row">Undergraduate Research Assistant — Transportation AI Lab</div>
+    <div class="abox">
+      <div class="abox-label">Currently</div>
+      <p>I'm actively working on making my Enterprise Agentic RAG system production-ready — extending the LangGraph pipeline with self-correction loops, hybrid retrieval (pgvector + BM25), and full observability via OpenTelemetry. I'm looking for AI/ML engineering and software development roles.</p>
+    </div>
+    <div class="abox">
+      <div class="abox-label">Experience</div>
+      <p>I've shipped production GenAI systems at two startups: an agentic document editor using Claude &amp; Amazon Bedrock at Comprinno Technologies (cutting prep time by 40%), and a real-time voicebot at under $0.03/interaction. At Lumiq I fine-tuned Llama, Mistral, and Gemma models and built RAG evaluation harnesses.</p>
+    </div>
+    <div class="abox">
+      <div class="abox-label">Interests</div>
+      <p>Outside of software I enjoy hardware ML — my gesture music controller pairs an ESP32 microcontroller and IMU sensor with a Python ML backend to control Spotify in real time, achieving 99%+ accuracy with Butterworth DSP filters and a hybrid classification approach.</p>
     </div>
   </div>
 </section>
@@ -404,80 +368,6 @@
   </div>
 </section>
 
-<hr />
-
-<!-- ── EXPERIENCE ── -->
-<section id="experience">
-  <p class="label">Career</p>
-  <h2 class="h2">Experience</h2>
-  <div class="exp-list">
-
-    <div class="exp-item">
-      <div class="exp-top">
-        <div>
-          <div class="exp-role">AI Engineering Intern</div>
-          <div class="exp-company">Comprinno Technologies — AWS Advanced Tier Partner · Remote</div>
-        </div>
-        <span class="exp-date">Jun – Sep 2025</span>
-      </div>
-      <ul class="exp-bullets">
-        <li>Shipped agentic document-drafting platform (Claude / Amazon Bedrock + React), cutting client document prep time by 40%</li>
-        <li>Deployed real-time speech-to-speech voicebot (PipeCat, FastAPI, Amazon Nova Sonic) at &lt;500 ms latency and &lt;$0.03/interaction</li>
-        <li>Authored CloudFormation IaC templates reducing deploy time from 45 min to &lt;5 min; practiced Agile across a distributed team</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="tag">Claude API</span>
-        <span class="tag">Amazon Bedrock</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">React</span>
-        <span class="tag">CloudFormation</span>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-top">
-        <div>
-          <div class="exp-role">Data Science Intern</div>
-          <div class="exp-company">Lumiq — Financial Services AI &amp; Data Consultancy · Remote</div>
-        </div>
-        <span class="exp-date">Dec 2024 – Mar 2025</span>
-      </div>
-      <ul class="exp-bullets">
-        <li>Fine-tuned transformer LLMs (PyTorch, Hugging Face) across Llama, Mistral, and Gemma for transcription and translation tasks</li>
-        <li>Built RAG pipelines with LangChain and LlamaIndex; designed evaluation harnesses benchmarking across open-source models</li>
-        <li>Delivered Streamlit demos; collaborated in Agile sprints across engineering and product</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="tag">PyTorch</span>
-        <span class="tag">LangChain</span>
-        <span class="tag">LlamaIndex</span>
-        <span class="tag">Hugging Face</span>
-        <span class="tag">Streamlit</span>
-      </div>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-top">
-        <div>
-          <div class="exp-role">Undergraduate Research Assistant</div>
-          <div class="exp-company">UMass AI Lab — Transportation Research Group · PI: Prof. Chengbo Ai</div>
-        </div>
-        <span class="exp-date">Oct 2025 – May 2026</span>
-      </div>
-      <ul class="exp-bullets">
-        <li>Built Python pipelines converting raw LiDAR PCAPs → structured 3D point-cloud frames for autonomous-driving perception models (Ouster SDK, NumPy, OpenCV)</li>
-        <li>Developed evaluation tooling on Segments.ai to validate 3D cuboid labels, improving dataset reliability and ML training-data quality</li>
-      </ul>
-      <div class="exp-tags">
-        <span class="tag">Python</span>
-        <span class="tag">OpenCV</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">LiDAR / Ouster SDK</span>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <hr />
 
