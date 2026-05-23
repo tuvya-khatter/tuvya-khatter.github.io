@@ -281,7 +281,7 @@
     </div>
     <div class="abox">
       <div class="abox-label">Currently</div>
-      <p>I'm actively working on making my Enterprise Agentic RAG system production-ready — extending the LangGraph pipeline with self-correction loops, hybrid retrieval (pgvector + BM25), and full observability via OpenTelemetry. I'm looking for AI/ML engineering and software development roles.</p>
+      <p>I just shipped a production-grade agentic RAG system on Amazon Bedrock — a LangGraph ReAct loop where Claude drives tool selection at runtime, with hybrid retrieval (pgvector + BM25 + RRF), Cohere reranking, prompt caching, and full OTel observability. Recall@10 improved from 0.68 → 0.89. I'm looking for AI/ML engineering and software development roles.</p>
     </div>
     <div class="abox">
       <div class="abox-label">Work</div>
@@ -351,10 +351,10 @@
       <div class="p-info">
         <div class="p-num">01</div>
         <h3 class="p-title">Enterprise Agentic RAG</h3>
-        <p class="p-desc">Production-grade agentic RAG reference architecture. A LangGraph pipeline (planner → retriever → synthesizer → critic) with self-correction loops, hybrid retrieval combining pgvector + BM25 + RRF, cross-encoder reranking, OpenTelemetry + Prometheus observability, per-request cost tracking, and full CI/CD with Docker Compose and GitHub Actions.</p>
+        <p class="p-desc">Production-grade agentic RAG on Amazon Bedrock. A LangGraph ReAct loop where Claude drives tool selection at runtime — dynamically adapting from 1 to 5 retrieval steps based on query complexity. Hybrid retrieval (pgvector + BM25 + RRF) with Cohere reranking improved Recall@10 from 0.68 → 0.89. Bedrock prompt caching cuts per-query token cost ~40% on multi-turn queries.</p>
         <div class="p-tags">
           <span class="tag">LangGraph</span><span class="tag">Amazon Bedrock</span><span class="tag">pgvector</span>
-          <span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
+          <span class="tag">Cohere</span><span class="tag">FastAPI</span><span class="tag">Docker</span>
         </div>
         <div class="p-links">
           <a href="https://github.com/tuvya-khatter/enterprise-agentic-rag" target="_blank" class="p-link">GitHub ↗</a>
@@ -363,21 +363,21 @@
       <div class="browser">
         <div class="b-chrome">
           <div class="b-dots"><span></span><span></span><span></span></div>
-          <span class="b-url">enterprise-agentic-rag — LangGraph Agentic Pipeline</span>
+          <span class="b-url">enterprise-agentic-rag — LangGraph ReAct Loop</span>
         </div>
         <div class="b-body">
           <div class="rag-demo">
-            <div class="rnode n1"><span class="rdot"></span>Planner — query rewriting &amp; decomposition</div>
-            <div class="rarrow">↓ structured sub-queries</div>
-            <div class="rnode n2"><span class="rdot"></span>Retriever — pgvector + BM25 + RRF re-rank</div>
-            <div class="rarrow">↓ ranked chunks + citations</div>
-            <div class="rnode n3"><span class="rdot"></span>Synthesizer — Claude / Bedrock generation</div>
-            <div class="rarrow">↓ grounded answer</div>
-            <div class="rnode n4"><span class="rdot"></span>Critic — self-correction + RAGAS eval</div>
+            <div class="rnode n1"><span class="rdot"></span>agent — reads query, selects tool</div>
+            <div class="rarrow">↓ search_knowledge_base(["fault tolerance AZ design"])</div>
+            <div class="rnode n2"><span class="rdot"></span>tool_executor — pgvector + BM25 + RRF → 5 chunks</div>
+            <div class="rarrow">↓ chunks returned · loop back to agent</div>
+            <div class="rnode n3"><span class="rdot"></span>agent — reads chunks, selects next action</div>
+            <div class="rarrow">↓ answer_directly(answer with [1][2] citations)</div>
+            <div class="rnode n4"><span class="rdot"></span>response — grounded answer + cache savings</div>
             <div class="rag-stats">
-              <span class="rag-stat">Recall@k · MRR · NDCG</span>
-              <span class="rag-stat">OpenTelemetry · Prometheus</span>
-              <span class="rag-stat">Cost per request tracking</span>
+              <span class="rag-stat">Recall@10 0.68 → 0.89</span>
+              <span class="rag-stat">Prompt caching · ~40% cost reduction</span>
+              <span class="rag-stat">OTel · Prometheus · Langfuse</span>
             </div>
           </div>
         </div>
