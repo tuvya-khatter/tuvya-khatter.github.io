@@ -286,7 +286,7 @@
     </div>
     <div class="abox">
       <div class="abox-label">Currently</div>
-      <p>I just shipped a production-grade agentic RAG system on Amazon Bedrock — a LangGraph ReAct loop where Claude drives tool selection at runtime, with hybrid retrieval (pgvector + BM25 + RRF), Cohere reranking, prompt caching, and full OTel observability. Recall@10 improved from 0.68 → 0.89. I'm looking for AI/ML engineering and software development roles.</p>
+      <p>I'm actively working on making my Enterprise Agentic RAG system production-ready — extending the LangGraph pipeline with self-correction loops, hybrid retrieval (pgvector + BM25), and full observability via OpenTelemetry. I'm looking for AI/ML engineering and software development roles.</p>
     </div>
     <div class="abox">
       <div class="abox-label">Work</div>
@@ -356,10 +356,10 @@
       <div class="p-info">
         <div class="p-num">01</div>
         <h3 class="p-title">Enterprise Agentic RAG</h3>
-        <p class="p-desc">Production-grade agentic RAG on Amazon Bedrock. A LangGraph ReAct loop where Claude drives tool selection at runtime — dynamically adapting from 1 to 5 retrieval steps based on query complexity. Hybrid retrieval (pgvector + BM25 + RRF) with Cohere reranking improved Recall@10 from 0.68 → 0.89. Bedrock prompt caching cuts per-query token cost ~40% on multi-turn queries.</p>
+        <p class="p-desc">Production-grade agentic RAG reference architecture. A LangGraph pipeline (planner → retriever → synthesizer → critic) with self-correction loops, hybrid retrieval combining pgvector + BM25 + RRF, cross-encoder reranking, OpenTelemetry + Prometheus observability, per-request cost tracking, and full CI/CD with Docker Compose and GitHub Actions.</p>
         <div class="p-tags">
           <span class="tag">LangGraph</span><span class="tag">Amazon Bedrock</span><span class="tag">pgvector</span>
-          <span class="tag">Cohere</span><span class="tag">FastAPI</span><span class="tag">Docker</span>
+          <span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
         </div>
         <div class="p-links">
           <a href="https://github.com/tuvya-khatter/enterprise-agentic-rag" target="_blank" class="p-link">GitHub ↗</a>
@@ -368,31 +368,70 @@
       <div class="browser">
         <div class="b-chrome">
           <div class="b-dots"><span></span><span></span><span></span></div>
-          <span class="b-url">enterprise-agentic-rag — LangGraph ReAct Loop</span>
+          <span class="b-url">enterprise-agentic-rag — LangGraph Agentic Pipeline</span>
         </div>
         <div class="b-body">
           <div class="rag-demo">
-            <div class="rnode n1"><span class="rdot"></span>agent — reads query, selects tool</div>
-            <div class="rarrow">↓ search_knowledge_base(["fault tolerance AZ design"])</div>
-            <div class="rnode n2"><span class="rdot"></span>tool_executor — pgvector + BM25 + RRF → 5 chunks</div>
-            <div class="rarrow">↓ chunks returned · loop back to agent</div>
-            <div class="rnode n3"><span class="rdot"></span>agent — reads chunks, selects next action</div>
-            <div class="rarrow">↓ answer_directly(answer with [1][2] citations)</div>
-            <div class="rnode n4"><span class="rdot"></span>response — grounded answer + cache savings</div>
+            <div class="rnode n1"><span class="rdot"></span>Planner — query rewriting &amp; decomposition</div>
+            <div class="rarrow">↓ structured sub-queries</div>
+            <div class="rnode n2"><span class="rdot"></span>Retriever — pgvector + BM25 + RRF re-rank</div>
+            <div class="rarrow">↓ ranked chunks + citations</div>
+            <div class="rnode n3"><span class="rdot"></span>Synthesizer — Claude / Bedrock generation</div>
+            <div class="rarrow">↓ grounded answer</div>
+            <div class="rnode n4"><span class="rdot"></span>Critic — self-correction + RAGAS eval</div>
             <div class="rag-stats">
-              <span class="rag-stat">Recall@10 0.68 → 0.89</span>
-              <span class="rag-stat">Prompt caching · ~40% cost reduction</span>
-              <span class="rag-stat">OTel · Prometheus · Langfuse</span>
+              <span class="rag-stat">Recall@k · MRR · NDCG</span>
+              <span class="rag-stat">OpenTelemetry · Prometheus</span>
+              <span class="rag-stat">Cost per request tracking</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 2. Mobile Mechanic — info left, live demo iframe right -->
+    <!-- 2. Deep Research Agent — info left, research terminal right -->
     <div class="proj-card">
       <div class="p-info">
         <div class="p-num">02</div>
+        <h3 class="p-title">Deep Research Agent</h3>
+        <p class="p-desc">Interactive CLI research agent built on the Strands Agents SDK and Amazon Bedrock. Runs a multi-tool pipeline — web search, page extraction, and site crawl via Tavily — to synthesize comprehensive, cited Markdown reports. Streaming output, partial-save on interruption, session management, and rotating logs.</p>
+        <div class="p-tags">
+          <span class="tag">Python</span><span class="tag">Strands Agents SDK</span>
+          <span class="tag">Amazon Bedrock</span><span class="tag">Tavily</span><span class="tag">Claude 3.7</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/tuvya-khatter/deep-research-agent" target="_blank" class="p-link">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="browser">
+        <div class="b-chrome">
+          <div class="b-dots"><span></span><span></span><span></span></div>
+          <span class="b-url">deep-research-agent — Strands · Bedrock · Tavily</span>
+        </div>
+        <div class="b-body">
+          <div class="d-screen">
+            <div class="d-line"><span class="d-p">$ </span><span class="d-hi">uv run python -m deep_research_agent</span></div>
+            <div class="d-line d-ok">✓ Session f3a9c2 · Claude 3.7 Sonnet via Bedrock</div>
+            <div class="d-divider"></div>
+            <div class="d-line"><span class="d-p">query &gt; </span><span class="d-hi">"impact of AI on drug discovery 2025"</span></div>
+            <div class="d-line r-tool t1">[tavily_search]  "AI drug discovery 2025" → 10 results</div>
+            <div class="d-line r-tool t2">[tavily_extract] nature.com/ai-pharma → 4,218 tokens</div>
+            <div class="d-line r-tool t3">[tavily_crawl]   deepmind.com/alphafold → depth 2</div>
+            <div class="d-divider"></div>
+            <div class="d-line d-hi">## AI in Drug Discovery — 2025 Overview</div>
+            <div class="d-line">AlphaFold 3 cut target-ID time by <span class="d-ok">73%</span> vs. prior baselines...</div>
+            <div class="d-line">Novel candidates now proposed in <span class="d-ok">&lt;48 h</span> end-to-end...</div>
+            <div class="d-line d-p" style="margin-top:6px;">Sources: [nature.com] [deepmind.com] [nih.gov]</div>
+            <div class="d-line d-p">Output → research-output/ai-drug-discovery_20260525.md</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Mobile Mechanic — info left, live demo iframe right -->
+    <div class="proj-card">
+      <div class="p-info">
+        <div class="p-num">03</div>
         <h3 class="p-title">Mobile Mechanic Platform</h3>
         <p class="p-desc">Full-stack booking platform for an on-demand mobile mechanic service. Next.js frontend with service area lookup and appointment scheduling, Python backend with Supabase/PostgreSQL, Playwright end-to-end test suite with GitHub Actions CI, deployed on Vercel.</p>
         <div class="p-tags">
@@ -414,10 +453,10 @@
       </div>
     </div>
 
-    <!-- 3. SOW Editor — info left, workflow diagram right -->
+    <!-- 4. SOW Editor — info left, workflow diagram right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">03</div>
+        <div class="p-num">04</div>
         <h3 class="p-title">AI-Powered SOW Editor</h3>
         <p class="p-desc">React-based Statement of Work editor with real-time Claude AI assistance via AWS Bedrock. Rich text editing with Slate.js, inline AI suggestions, document state management with Zustand, change tracking, undo/redo, and PDF/DOCX export.</p>
         <div class="p-tags">
@@ -435,14 +474,12 @@
         </div>
         <div class="b-body">
           <div class="sow-flow">
-            <!-- Step 1: transcript input -->
             <div class="sf-box">
               <div class="sf-box-label">① Meeting Transcript</div>
               <div class="sf-line hi">"...the client is Acme Corp, migration by Q3,</div>
               <div class="sf-line hi"> budget around $200k, deliverables include..."</div>
             </div>
             <div style="text-align:center;color:#2a4a5a;font-size:0.7rem;padding:2px 0;">↓ entity extraction</div>
-            <!-- Step 2: two-panel editor -->
             <div class="sf-row">
               <div class="sf-box" style="flex:1.2;">
                 <div class="sf-box-label">② SOW Template</div>
@@ -463,7 +500,6 @@
               </div>
             </div>
             <div style="text-align:center;color:#2a4a5a;font-size:0.7rem;padding:2px 0;">↓ finalize</div>
-            <!-- Step 3: export -->
             <div class="sf-export">
               <span>④ Export</span>
               <span style="border:1px solid #1e3040;padding:2px 8px;border-radius:2px;">DOCX</span>
@@ -474,10 +510,10 @@
       </div>
     </div>
 
-    <!-- 4. Gesture Music Controller — info left, YT thumbnail right -->
+    <!-- 5. Gesture Music Controller — info left, YT thumbnail right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">04</div>
+        <div class="p-num">05</div>
         <h3 class="p-title">Gesture Music Controller</h3>
         <p class="p-desc">Real-time mid-air gesture recognition for Spotify control. An ESP32 + IMU sensor streams 6-axis data over serial; Butterworth DSP filters clean the signal before a hybrid ML + physical-polarity classifier achieves 99%+ accuracy. A live 6-panel Matplotlib dashboard shows waveforms, confidence, and Spotify metadata in real time.</p>
         <div class="p-tags">
@@ -503,10 +539,10 @@
       </div>
     </div>
 
-    <!-- 5. Voicebot — info left, wave right -->
+    <!-- 6. Voicebot — info left, wave right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">05</div>
+        <div class="p-num">06</div>
         <h3 class="p-title">Real-Time Voicebot</h3>
         <p class="p-desc">Voice assistant powered by Amazon Nova Sonic via AWS Bedrock's bidirectional streaming API. Features barge-in detection (interrupt mid-response like a real conversation), async tool use for live data lookup, a Streamlit UI, and PyAudio-based I/O with separate 16 kHz input and 24 kHz output streams.</p>
         <div class="p-tags">
@@ -533,10 +569,10 @@
       </div>
     </div>
 
-    <!-- 6. News Video Generator — info left, feed right -->
+    <!-- 7. News Video Generator — info left, feed right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">06</div>
+        <div class="p-num">07</div>
         <h3 class="p-title">AI News Video Generator</h3>
         <p class="p-desc">Automated pipeline that scrapes trending articles from BBC and CNN, generates video scripts with GPT, and renders MP4s with AI-generated images and text overlays. Fully customizable video duration, pacing, and content sources — runs end-to-end without human intervention.</p>
         <div class="p-tags">
@@ -568,45 +604,6 @@
               <span>BBC · Queued</span>
             </div>
             <div class="news-prog"><div class="news-fill"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. Deep Research Agent — info left, research terminal right -->
-    <div class="proj-card">
-      <div class="p-info">
-        <div class="p-num">07</div>
-        <h3 class="p-title">Deep Research Agent</h3>
-        <p class="p-desc">Interactive CLI research agent built on the Strands Agents SDK and Amazon Bedrock. Runs a multi-tool pipeline — web search, page extraction, and site crawl via Tavily — to synthesize comprehensive, cited Markdown reports. Streaming output, partial-save on interruption, session management, and rotating logs.</p>
-        <div class="p-tags">
-          <span class="tag">Python</span><span class="tag">Strands Agents SDK</span>
-          <span class="tag">Amazon Bedrock</span><span class="tag">Tavily</span><span class="tag">Claude 3.7</span>
-        </div>
-        <div class="p-links">
-          <a href="https://github.com/tuvya-khatter/deep-research-agent" target="_blank" class="p-link">GitHub ↗</a>
-        </div>
-      </div>
-      <div class="browser">
-        <div class="b-chrome">
-          <div class="b-dots"><span></span><span></span><span></span></div>
-          <span class="b-url">deep-research-agent — Strands · Bedrock · Tavily</span>
-        </div>
-        <div class="b-body">
-          <div class="d-screen">
-            <div class="d-line"><span class="d-p">$ </span><span class="d-hi">uv run python -m deep_research_agent</span></div>
-            <div class="d-line d-ok">✓ Session f3a9c2 · Claude 3.7 Sonnet via Bedrock</div>
-            <div class="d-divider"></div>
-            <div class="d-line"><span class="d-p">query &gt; </span><span class="d-hi">"impact of AI on drug discovery 2025"</span></div>
-            <div class="d-line r-tool t1">[tavily_search]  "AI drug discovery 2025" → 10 results</div>
-            <div class="d-line r-tool t2">[tavily_extract] nature.com/ai-pharma → 4,218 tokens</div>
-            <div class="d-line r-tool t3">[tavily_crawl]   deepmind.com/alphafold → depth 2</div>
-            <div class="d-divider"></div>
-            <div class="d-line d-hi">## AI in Drug Discovery — 2025 Overview</div>
-            <div class="d-line">AlphaFold 3 cut target-ID time by <span class="d-ok">73%</span> vs. prior baselines...</div>
-            <div class="d-line">Novel candidates now proposed in <span class="d-ok">&lt;48 h</span> end-to-end...</div>
-            <div class="d-line d-p" style="margin-top:6px;">Sources: [nature.com] [deepmind.com] [nih.gov]</div>
-            <div class="d-line d-p">Output → research-output/ai-drug-discovery_20260525.md</div>
           </div>
         </div>
       </div>
