@@ -173,6 +173,11 @@
     .news-fill { height: 100%; background: var(--dim); animation: prog 3s linear infinite; }
     @keyframes prog { 0%{width:0}100%{width:100%} }
 
+    /* research terminal */
+    .r-tool { animation: r-pulse 3.6s ease-in-out infinite; }
+    .r-tool.t1{animation-delay:0s}.r-tool.t2{animation-delay:.9s}.r-tool.t3{animation-delay:1.8s}
+    @keyframes r-pulse { 0%,100%{color:var(--dim)}35%{color:var(--muted)} }
+
     /* ── certs ── */
     #certifications { border-top: 1px solid var(--border); }
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 48px; }
@@ -563,6 +568,45 @@
               <span>BBC · Queued</span>
             </div>
             <div class="news-prog"><div class="news-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Deep Research Agent — info left, research terminal right -->
+    <div class="proj-card">
+      <div class="p-info">
+        <div class="p-num">07</div>
+        <h3 class="p-title">Deep Research Agent</h3>
+        <p class="p-desc">Interactive CLI research agent built on the Strands Agents SDK and Amazon Bedrock. Runs a multi-tool pipeline — web search, page extraction, and site crawl via Tavily — to synthesize comprehensive, cited Markdown reports. Streaming output, partial-save on interruption, session management, and rotating logs.</p>
+        <div class="p-tags">
+          <span class="tag">Python</span><span class="tag">Strands Agents SDK</span>
+          <span class="tag">Amazon Bedrock</span><span class="tag">Tavily</span><span class="tag">Claude 3.7</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/tuvya-khatter/deep-research-agent" target="_blank" class="p-link">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="browser">
+        <div class="b-chrome">
+          <div class="b-dots"><span></span><span></span><span></span></div>
+          <span class="b-url">deep-research-agent — Strands · Bedrock · Tavily</span>
+        </div>
+        <div class="b-body">
+          <div class="d-screen">
+            <div class="d-line"><span class="d-p">$ </span><span class="d-hi">uv run python -m deep_research_agent</span></div>
+            <div class="d-line d-ok">✓ Session f3a9c2 · Claude 3.7 Sonnet via Bedrock</div>
+            <div class="d-divider"></div>
+            <div class="d-line"><span class="d-p">query &gt; </span><span class="d-hi">"impact of AI on drug discovery 2025"</span></div>
+            <div class="d-line r-tool t1">[tavily_search]  "AI drug discovery 2025" → 10 results</div>
+            <div class="d-line r-tool t2">[tavily_extract] nature.com/ai-pharma → 4,218 tokens</div>
+            <div class="d-line r-tool t3">[tavily_crawl]   deepmind.com/alphafold → depth 2</div>
+            <div class="d-divider"></div>
+            <div class="d-line d-hi">## AI in Drug Discovery — 2025 Overview</div>
+            <div class="d-line">AlphaFold 3 cut target-ID time by <span class="d-ok">73%</span> vs. prior baselines...</div>
+            <div class="d-line">Novel candidates now proposed in <span class="d-ok">&lt;48 h</span> end-to-end...</div>
+            <div class="d-line d-p" style="margin-top:6px;">Sources: [nature.com] [deepmind.com] [nih.gov]</div>
+            <div class="d-line d-p">Output → research-output/ai-drug-discovery_20260525.md</div>
           </div>
         </div>
       </div>
