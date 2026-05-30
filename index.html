@@ -173,6 +173,16 @@
     .news-fill { height: 100%; background: var(--dim); animation: prog 3s linear infinite; }
     @keyframes prog { 0%{width:0}100%{width:100%} }
 
+    /* SAP ABAP architecture diagram */
+    .abap-arch { width:100%;height:100%;padding:18px;font-family:'Fira Code',monospace;font-size:0.68rem;display:flex;flex-direction:column;gap:6px;overflow:hidden; }
+    .abap-layer { border:1px solid var(--border);padding:8px 12px;border-radius:3px;background:var(--bg);animation:abap-p 5s ease-in-out infinite; }
+    .abap-layer.l1{animation-delay:0s}.abap-layer.l2{animation-delay:1s}.abap-layer.l3{animation-delay:2s}.abap-layer.l4{animation-delay:3s}
+    @keyframes abap-p { 0%,100%{border-color:var(--border)}30%{border-color:var(--dim)} }
+    .abap-lbl { font-size:0.57rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-bottom:6px; }
+    .abap-chips { display:flex;flex-wrap:wrap;gap:5px; }
+    .abap-chip { font-size:0.61rem;padding:2px 8px;border:1px solid var(--border);border-radius:2px;color:var(--muted); }
+    .abap-arrow { text-align:center;color:var(--dim);font-size:0.62rem;padding:1px 0; }
+
     /* research terminal */
     .r-tool { animation: r-pulse 3.6s ease-in-out infinite; }
     .r-tool.t1{animation-delay:0s}.r-tool.t2{animation-delay:.9s}.r-tool.t3{animation-delay:1.8s}
@@ -428,10 +438,79 @@
       </div>
     </div>
 
-    <!-- 3. Mobile Mechanic — info left, live demo iframe right -->
+    <!-- 3. SAP ABAP Flight Booking — info left, arch diagram right -->
     <div class="proj-card">
       <div class="p-info">
         <div class="p-num">03</div>
+        <h3 class="p-title">SAP ABAP Flight Booking Platform</h3>
+        <p class="p-desc">Full-stack flight booking system on SAP ABAP OO / HANA. Facade pattern over 8 domain classes (flight, booking, customer, payment, ticket, validation, cancellation) exposed through 4 REST HTTP handlers. CDS view data access layer over SAP standard flight tables with full booking lifecycle — search, reserve, pay, cancel, refund, and e-ticket generation.</p>
+        <div class="p-tags">
+          <span class="tag">SAP ABAP OO</span><span class="tag">SAP HANA</span><span class="tag">CDS Views</span>
+          <span class="tag">REST APIs</span><span class="tag">Facade Pattern</span>
+        </div>
+        <div class="p-links">
+          <a href="https://github.com/tuvya-khatter/sap-abap-workspace" target="_blank" class="p-link">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="browser">
+        <div class="b-chrome">
+          <div class="b-dots"><span></span><span></span><span></span></div>
+          <span class="b-url">sap-abap-workspace — ABAP OO · SAP HANA · REST</span>
+        </div>
+        <div class="b-body">
+          <div class="abap-arch">
+            <div class="abap-layer l1">
+              <div class="abap-lbl">REST Handlers</div>
+              <div class="abap-chips">
+                <span class="abap-chip">GET /search</span>
+                <span class="abap-chip">POST /book</span>
+                <span class="abap-chip">PUT /manage</span>
+                <span class="abap-chip">GET /admin</span>
+              </div>
+            </div>
+            <div class="abap-arrow">↓ ZCL_FACADE_1986</div>
+            <div class="abap-layer l2">
+              <div class="abap-lbl">Domain Classes</div>
+              <div class="abap-chips">
+                <span class="abap-chip">Flight</span>
+                <span class="abap-chip">Booking</span>
+                <span class="abap-chip">Customer</span>
+                <span class="abap-chip">Payment</span>
+                <span class="abap-chip">Ticket</span>
+                <span class="abap-chip">Validation</span>
+                <span class="abap-chip">Cancellation</span>
+              </div>
+            </div>
+            <div class="abap-arrow">↓ CDS Views</div>
+            <div class="abap-layer l3">
+              <div class="abap-lbl">Data Access Layer</div>
+              <div class="abap-chips">
+                <span class="abap-chip">ZI_FLIGHT_1986</span>
+                <span class="abap-chip">ZI_BOOKING_1986</span>
+                <span class="abap-chip">ZI_CARRIER_1986</span>
+                <span class="abap-chip">ZI_CUSTOMER_1986</span>
+              </div>
+            </div>
+            <div class="abap-arrow">↓</div>
+            <div class="abap-layer l4">
+              <div class="abap-lbl">SAP HANA</div>
+              <div class="abap-chips">
+                <span class="abap-chip">SCARR</span>
+                <span class="abap-chip">SPFLI</span>
+                <span class="abap-chip">SFLIGHT</span>
+                <span class="abap-chip">SBOOK</span>
+                <span class="abap-chip">SCUSTOM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Mobile Mechanic — info left, live demo iframe right -->
+    <div class="proj-card">
+      <div class="p-info">
+        <div class="p-num">04</div>
         <h3 class="p-title">Mobile Mechanic Platform</h3>
         <p class="p-desc">Full-stack booking platform for an on-demand mobile mechanic service. Next.js frontend with service area lookup and appointment scheduling, Python backend with Supabase/PostgreSQL, Playwright end-to-end test suite with GitHub Actions CI, deployed on Vercel.</p>
         <div class="p-tags">
@@ -453,10 +532,10 @@
       </div>
     </div>
 
-    <!-- 4. SOW Editor — info left, workflow diagram right -->
+    <!-- 5. SOW Editor — info left, workflow diagram right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">04</div>
+        <div class="p-num">05</div>
         <h3 class="p-title">AI-Powered SOW Editor</h3>
         <p class="p-desc">React-based Statement of Work editor with real-time Claude AI assistance via AWS Bedrock. Rich text editing with Slate.js, inline AI suggestions, document state management with Zustand, change tracking, undo/redo, and PDF/DOCX export.</p>
         <div class="p-tags">
@@ -510,10 +589,10 @@
       </div>
     </div>
 
-    <!-- 5. Gesture Music Controller — info left, YT thumbnail right -->
+    <!-- 6. Gesture Music Controller — info left, YT thumbnail right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">05</div>
+        <div class="p-num">06</div>
         <h3 class="p-title">Gesture Music Controller</h3>
         <p class="p-desc">Real-time mid-air gesture recognition for Spotify control. An ESP32 + IMU sensor streams 6-axis data over serial; Butterworth DSP filters clean the signal before a hybrid ML + physical-polarity classifier achieves 99%+ accuracy. A live 6-panel Matplotlib dashboard shows waveforms, confidence, and Spotify metadata in real time.</p>
         <div class="p-tags">
@@ -539,10 +618,10 @@
       </div>
     </div>
 
-    <!-- 6. Voicebot — info left, wave right -->
+    <!-- 7. Voicebot — info left, wave right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">06</div>
+        <div class="p-num">07</div>
         <h3 class="p-title">Real-Time Voicebot</h3>
         <p class="p-desc">Voice assistant powered by Amazon Nova Sonic via AWS Bedrock's bidirectional streaming API. Features barge-in detection (interrupt mid-response like a real conversation), async tool use for live data lookup, a Streamlit UI, and PyAudio-based I/O with separate 16 kHz input and 24 kHz output streams.</p>
         <div class="p-tags">
@@ -569,10 +648,10 @@
       </div>
     </div>
 
-    <!-- 7. News Video Generator — info left, feed right -->
+    <!-- 8. News Video Generator — info left, feed right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">07</div>
+        <div class="p-num">08</div>
         <h3 class="p-title">AI News Video Generator</h3>
         <p class="p-desc">Automated pipeline that scrapes trending articles from BBC and CNN, generates video scripts with GPT, and renders MP4s with AI-generated images and text overlays. Fully customizable video duration, pacing, and content sources — runs end-to-end without human intervention.</p>
         <div class="p-tags">
