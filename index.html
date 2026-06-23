@@ -65,13 +65,19 @@
     .hero-links .divider { color: var(--dim); }
     .scroll-hint { position: absolute; bottom: 36px; left: 40px; font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--dim); letter-spacing: 2px; }
 
-    /* ── about ── */
-    .about-intro { color: var(--muted); font-size: 0.95rem; line-height: 1.8; max-width: 680px; margin-bottom: 40px; }
-    .about-boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-    .abox { background: var(--bg); padding: 28px; transition: background 0.2s; }
-    .abox:hover { background: var(--bg2); }
-    .abox-label { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-    .abox p { font-size: 0.88rem; color: var(--muted); line-height: 1.78; }
+    /* ── about / timeline ── */
+    .about-intro { color: var(--muted); font-size: 0.95rem; line-height: 1.8; max-width: 680px; margin-bottom: 48px; }
+    .tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+    .tl-col-hdr { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-bottom: 0; }
+    .tl-entry { display: flex; gap: 14px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+    .tl-entry:last-child { border-bottom: none; }
+    .tl-mono { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-family: 'Fira Code', monospace; font-size: 0.58rem; color: var(--dim); flex-shrink: 0; margin-top: 2px; transition: border-color 0.2s; }
+    .tl-entry:hover .tl-mono { border-color: var(--dim); }
+    .tl-org { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+    .tl-role { font-size: 0.8rem; color: var(--muted); margin-bottom: 4px; }
+    .tl-date { font-family: 'Fira Code', monospace; font-size: 0.62rem; color: var(--dim); margin-bottom: 9px; }
+    .tl-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.72; }
+    .tl-sub-hdr { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--border); margin-top: 40px; }
 
     /* ── skills ── */
     #skills { border-top: 1px solid var(--border); }
@@ -183,16 +189,6 @@
     .abap-chip { font-size:0.61rem;padding:2px 8px;border:1px solid var(--border);border-radius:2px;color:var(--muted); }
     .abap-arrow { text-align:center;color:var(--dim);font-size:0.62rem;padding:1px 0; }
 
-    /* lakehouse architecture diagram */
-    .lake-arch { width:100%;height:100%;padding:18px;font-family:'Fira Code',monospace;font-size:0.68rem;display:flex;flex-direction:column;gap:4px;overflow:hidden; }
-    .lake-layer { border:1px solid var(--border);padding:8px 12px;border-radius:3px;background:var(--bg);animation:lake-p 6s ease-in-out infinite; }
-    .lake-layer.ll1{animation-delay:0s}.lake-layer.ll2{animation-delay:1.2s}.lake-layer.ll3{animation-delay:2.4s}.lake-layer.ll4{animation-delay:3.6s}.lake-layer.ll5{animation-delay:4.8s}
-    @keyframes lake-p { 0%,100%{border-color:var(--border)}30%{border-color:var(--dim)} }
-    .lake-lbl { font-size:0.57rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-bottom:6px; }
-    .lake-chips { display:flex;flex-wrap:wrap;gap:5px; }
-    .lake-chip { font-size:0.61rem;padding:2px 8px;border:1px solid var(--border);border-radius:2px;color:var(--muted); }
-    .lake-arrow { text-align:center;color:var(--dim);font-size:0.62rem;padding:1px 0; }
-
     /* research terminal */
     .r-tool { animation: r-pulse 3.6s ease-in-out infinite; }
     .r-tool.t1{animation-delay:0s}.r-tool.t2{animation-delay:.9s}.r-tool.t3{animation-delay:1.8s}
@@ -236,7 +232,7 @@
     /* ── responsive ── */
     @media (max-width: 820px) {
       section { padding: 80px 24px; }
-      .about-boxes { grid-template-columns: 1fr; }
+      .tl-grid { grid-template-columns: 1fr; }
       .proj-card { grid-template-columns: 1fr; }
       .p-info { border-right: none; border-bottom: 1px solid var(--border); }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -258,7 +254,6 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#certifications">Certs</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -270,7 +265,6 @@
   <a href="#about" class="mob-link">About</a>
   <a href="#skills" class="mob-link">Skills</a>
   <a href="#projects" class="mob-link">Projects</a>
-  <a href="#certifications" class="mob-link">Certs</a>
   <a href="#contact" class="mob-link">Contact</a>
 </div>
 
@@ -298,24 +292,106 @@
 <!-- ── ABOUT ── -->
 <section id="about">
   <p class="label">About</p>
-  <p class="about-intro">I'm a recent graduate from the University of Massachusetts Amherst, where I studied Computer Science &amp; Mathematics. I build production AI systems and am currently making my Enterprise RAG pipeline fully agentic.</p>
-  <div class="about-boxes">
-    <div class="abox">
-      <div class="abox-label">Background</div>
-      <p>I graduated from UMass Amherst with a B.S. in Computer Science &amp; Mathematics and a minor in Business Administration, receiving the Chancellor's Award scholarship and graduating with a 3.76 GPA. I also served as a Teaching Assistant for Database Systems.</p>
+  <p class="about-intro">CS &amp; Math grad from UMass Amherst. I build production AI systems — agentic pipelines, real-time voice, enterprise GenAI on AWS Bedrock. Currently looking for AI/ML engineering and software development roles.</p>
+
+  <div class="tl-grid">
+
+    <!-- LEFT: Experience -->
+    <div>
+      <div class="tl-col-hdr">Experience</div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">CT</div>
+        <div>
+          <div class="tl-org">Comprinno Technologies</div>
+          <div class="tl-role">AI Intern · AWS Advanced Tier Partner</div>
+          <div class="tl-date">Jun 2025 – Sep 2025</div>
+          <div class="tl-desc">Shipped an agentic SOW-drafting platform (Claude / Bedrock + React) cutting doc prep time 40%. Built a real-time speech-to-speech voicebot at &lt;$0.03/session. Authored CloudFormation IaC reducing deploy time from 45 min to &lt;5 min.</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">LQ</div>
+        <div>
+          <div class="tl-org">Lumiq</div>
+          <div class="tl-role">Data Science Intern · Financial AI</div>
+          <div class="tl-date">Dec 2024 – Mar 2025</div>
+          <div class="tl-desc">Fine-tuned Llama, Mistral, and Gemma transformers for transcription and translation. Built RAG pipelines with LangChain + LlamaIndex and designed evaluation harnesses across open-source models.</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">AL</div>
+        <div>
+          <div class="tl-org">UMass AI Lab</div>
+          <div class="tl-role">Undergraduate Research Assistant · Transportation</div>
+          <div class="tl-date">Oct 2025 – May 2026</div>
+          <div class="tl-desc">Built Python pipelines converting raw LiDAR PCAPs into structured 3D point-cloud frames for autonomous-driving perception models. Developed label validation tooling on Segments.ai.</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">TA</div>
+        <div>
+          <div class="tl-org">UMass Amherst</div>
+          <div class="tl-role">Teaching Assistant · Database Systems</div>
+          <div class="tl-date">2024 – 2025</div>
+          <div class="tl-desc">Led office hours and supported students through database design, SQL, and systems concepts.</div>
+        </div>
+      </div>
     </div>
-    <div class="abox">
-      <div class="abox-label">Currently</div>
-      <p>I'm actively working on making my Enterprise Agentic RAG system production-ready — extending the LangGraph pipeline with self-correction loops, hybrid retrieval (pgvector + BM25), and full observability via OpenTelemetry. I'm looking for AI/ML engineering and software development roles.</p>
+
+    <!-- RIGHT: Education + Certs -->
+    <div>
+      <div class="tl-col-hdr">Education</div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">UM</div>
+        <div>
+          <div class="tl-org">University of Massachusetts Amherst</div>
+          <div class="tl-role">B.S. Computer Science &amp; Mathematics · Minor in Business</div>
+          <div class="tl-date">Aug 2023 – May 2026</div>
+          <div class="tl-desc">Chancellor's Award — $8,000/semester merit scholarship. Dean's List, GPA 3.76 / 4.0. Manning College of Information &amp; Computer Sciences.</div>
+        </div>
+      </div>
+
+      <div class="tl-sub-hdr">Certifications</div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">AWS</div>
+        <div>
+          <div class="tl-org">AWS Certified Generative AI Developer</div>
+          <div class="tl-role">Professional</div>
+          <div class="tl-date">Amazon Web Services</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">AWS</div>
+        <div>
+          <div class="tl-org">AWS Certified ML Engineer Associate</div>
+          <div class="tl-role">MLA-C01</div>
+          <div class="tl-date">Amazon Web Services</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">DL</div>
+        <div>
+          <div class="tl-org">Generative AI with LLMs</div>
+          <div class="tl-role">DeepLearning.AI &amp; AWS</div>
+        </div>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-mono">SF</div>
+        <div>
+          <div class="tl-org">Certified AI Associate</div>
+          <div class="tl-role">Salesforce</div>
+        </div>
+      </div>
     </div>
-    <div class="abox">
-      <div class="abox-label">Work</div>
-      <p>I've shipped production GenAI systems at two startups: an agentic document editor using Claude &amp; Amazon Bedrock at Comprinno Technologies (cutting prep time by 40%), and a real-time voicebot at under $0.03/interaction. At Lumiq I fine-tuned Llama, Mistral, and Gemma models and built RAG evaluation harnesses.</p>
-    </div>
-    <div class="abox">
-      <div class="abox-label">Interests</div>
-      <p>Outside of software I enjoy hardware ML — my gesture music controller pairs an ESP32 microcontroller and IMU sensor with a Python ML backend to control Spotify in real time, achieving 99%+ accuracy with Butterworth DSP filters and a hybrid classification approach.</p>
-    </div>
+
   </div>
 </section>
 
@@ -448,71 +524,68 @@
       </div>
     </div>
 
-    <!-- 3. Agentic Analytics Lakehouse — info left, arch diagram right -->
+    <!-- 3. SAP ABAP Flight Booking — info left, arch diagram right -->
     <div class="proj-card">
       <div class="p-info">
         <div class="p-num">03</div>
-        <h3 class="p-title">Agentic Analytics Lakehouse</h3>
-        <p class="p-desc">Full agentic analytics platform on AWS enabling natural language queries across structured and unstructured data — no SQL required. Deployed MCP servers (Athena, S3Vectors, Redshift) on Bedrock AgentCore Runtime behind a managed gateway with Cognito OAuth. Lakehouse layer uses Apache Iceberg on S3 with AWS Glue Data Catalog, queried via Athena and Redshift Serverless + Spectrum; a graph-based semantic layer grounds LLM responses to business metrics without hallucination.</p>
+        <h3 class="p-title">SAP ABAP Flight Booking Platform</h3>
+        <p class="p-desc">Full-stack flight booking system on SAP ABAP OO / HANA. Facade pattern over 8 domain classes (flight, booking, customer, payment, ticket, validation, cancellation) exposed through 4 REST HTTP handlers. CDS view data access layer over SAP standard flight tables with full booking lifecycle — search, reserve, pay, cancel, refund, and e-ticket generation.</p>
         <div class="p-tags">
-          <span class="tag">Amazon Bedrock AgentCore</span><span class="tag">MCP</span>
-          <span class="tag">Apache Iceberg</span><span class="tag">AWS Glue</span>
-          <span class="tag">Redshift Serverless</span><span class="tag">Amazon Cognito</span>
+          <span class="tag">SAP ABAP OO</span><span class="tag">SAP HANA</span><span class="tag">CDS Views</span>
+          <span class="tag">REST APIs</span><span class="tag">Facade Pattern</span>
         </div>
         <div class="p-links">
-          <a href="https://github.com/tuvya-khatter/agentic-analytics-lakehouse" target="_blank" class="p-link">GitHub ↗</a>
+          <a href="https://github.com/tuvya-khatter/sap-abap-workspace" target="_blank" class="p-link">GitHub ↗</a>
         </div>
       </div>
       <div class="browser">
         <div class="b-chrome">
           <div class="b-dots"><span></span><span></span><span></span></div>
-          <span class="b-url">agentic-analytics-lakehouse — Bedrock AgentCore · MCP · Iceberg</span>
+          <span class="b-url">sap-abap-workspace — ABAP OO · SAP HANA · REST</span>
         </div>
         <div class="b-body">
-          <div class="lake-arch">
-            <div class="lake-layer ll1">
-              <div class="lake-lbl">Natural Language Interface</div>
-              <div class="lake-chips">
-                <span class="lake-chip">Claude Code</span>
-                <span class="lake-chip">QuickSuite</span>
-                <span class="lake-chip">"Show Q3 revenue by region"</span>
+          <div class="abap-arch">
+            <div class="abap-layer l1">
+              <div class="abap-lbl">REST Handlers</div>
+              <div class="abap-chips">
+                <span class="abap-chip">GET /search</span>
+                <span class="abap-chip">POST /book</span>
+                <span class="abap-chip">PUT /manage</span>
+                <span class="abap-chip">GET /admin</span>
               </div>
             </div>
-            <div class="lake-arrow">↓ Cognito OAuth</div>
-            <div class="lake-layer ll2">
-              <div class="lake-lbl">Bedrock AgentCore Gateway</div>
-              <div class="lake-chips">
-                <span class="lake-chip">Athena MCP</span>
-                <span class="lake-chip">Redshift MCP</span>
-                <span class="lake-chip">S3Vectors MCP</span>
+            <div class="abap-arrow">↓ ZCL_FACADE_1986</div>
+            <div class="abap-layer l2">
+              <div class="abap-lbl">Domain Classes</div>
+              <div class="abap-chips">
+                <span class="abap-chip">Flight</span>
+                <span class="abap-chip">Booking</span>
+                <span class="abap-chip">Customer</span>
+                <span class="abap-chip">Payment</span>
+                <span class="abap-chip">Ticket</span>
+                <span class="abap-chip">Validation</span>
+                <span class="abap-chip">Cancellation</span>
               </div>
             </div>
-            <div class="lake-arrow">↓ graph-based semantic layer</div>
-            <div class="lake-layer ll3">
-              <div class="lake-lbl">Semantic Layer</div>
-              <div class="lake-chips">
-                <span class="lake-chip">Business Metrics</span>
-                <span class="lake-chip">Schema-Grounded</span>
-                <span class="lake-chip">No Hallucination</span>
+            <div class="abap-arrow">↓ CDS Views</div>
+            <div class="abap-layer l3">
+              <div class="abap-lbl">Data Access Layer</div>
+              <div class="abap-chips">
+                <span class="abap-chip">ZI_FLIGHT_1986</span>
+                <span class="abap-chip">ZI_BOOKING_1986</span>
+                <span class="abap-chip">ZI_CARRIER_1986</span>
+                <span class="abap-chip">ZI_CUSTOMER_1986</span>
               </div>
             </div>
-            <div class="lake-arrow">↓</div>
-            <div class="lake-layer ll4">
-              <div class="lake-lbl">Query Engines</div>
-              <div class="lake-chips">
-                <span class="lake-chip">Amazon Athena</span>
-                <span class="lake-chip">Redshift Serverless</span>
-                <span class="lake-chip">Redshift Spectrum</span>
-              </div>
-            </div>
-            <div class="lake-arrow">↓</div>
-            <div class="lake-layer ll5">
-              <div class="lake-lbl">Data Lakehouse (S3)</div>
-              <div class="lake-chips">
-                <span class="lake-chip">Apache Iceberg</span>
-                <span class="lake-chip">AWS Glue Catalog</span>
-                <span class="lake-chip">Parquet</span>
-                <span class="lake-chip">S3Vectors</span>
+            <div class="abap-arrow">↓</div>
+            <div class="abap-layer l4">
+              <div class="abap-lbl">SAP HANA</div>
+              <div class="abap-chips">
+                <span class="abap-chip">SCARR</span>
+                <span class="abap-chip">SPFLI</span>
+                <span class="abap-chip">SFLIGHT</span>
+                <span class="abap-chip">SBOOK</span>
+                <span class="abap-chip">SCUSTOM</span>
               </div>
             </div>
           </div>
@@ -602,79 +675,10 @@
       </div>
     </div>
 
-    <!-- 6. SAP ABAP Flight Booking — info left, arch diagram right -->
+    <!-- 6. Gesture Music Controller — info left, YT thumbnail right -->
     <div class="proj-card">
       <div class="p-info">
         <div class="p-num">06</div>
-        <h3 class="p-title">SAP ABAP Flight Booking Platform</h3>
-        <p class="p-desc">Full-stack flight booking system on SAP ABAP OO / HANA. Facade pattern over 8 domain classes (flight, booking, customer, payment, ticket, validation, cancellation) exposed through 4 REST HTTP handlers. CDS view data access layer over SAP standard flight tables with full booking lifecycle — search, reserve, pay, cancel, refund, and e-ticket generation.</p>
-        <div class="p-tags">
-          <span class="tag">SAP ABAP OO</span><span class="tag">SAP HANA</span><span class="tag">CDS Views</span>
-          <span class="tag">REST APIs</span><span class="tag">Facade Pattern</span>
-        </div>
-        <div class="p-links">
-          <a href="https://github.com/tuvya-khatter/sap-abap-workspace" target="_blank" class="p-link">GitHub ↗</a>
-        </div>
-      </div>
-      <div class="browser">
-        <div class="b-chrome">
-          <div class="b-dots"><span></span><span></span><span></span></div>
-          <span class="b-url">sap-abap-workspace — ABAP OO · SAP HANA · REST</span>
-        </div>
-        <div class="b-body">
-          <div class="abap-arch">
-            <div class="abap-layer l1">
-              <div class="abap-lbl">REST Handlers</div>
-              <div class="abap-chips">
-                <span class="abap-chip">GET /search</span>
-                <span class="abap-chip">POST /book</span>
-                <span class="abap-chip">PUT /manage</span>
-                <span class="abap-chip">GET /admin</span>
-              </div>
-            </div>
-            <div class="abap-arrow">↓ ZCL_FACADE_1986</div>
-            <div class="abap-layer l2">
-              <div class="abap-lbl">Domain Classes</div>
-              <div class="abap-chips">
-                <span class="abap-chip">Flight</span>
-                <span class="abap-chip">Booking</span>
-                <span class="abap-chip">Customer</span>
-                <span class="abap-chip">Payment</span>
-                <span class="abap-chip">Ticket</span>
-                <span class="abap-chip">Validation</span>
-                <span class="abap-chip">Cancellation</span>
-              </div>
-            </div>
-            <div class="abap-arrow">↓ CDS Views</div>
-            <div class="abap-layer l3">
-              <div class="abap-lbl">Data Access Layer</div>
-              <div class="abap-chips">
-                <span class="abap-chip">ZI_FLIGHT_1986</span>
-                <span class="abap-chip">ZI_BOOKING_1986</span>
-                <span class="abap-chip">ZI_CARRIER_1986</span>
-                <span class="abap-chip">ZI_CUSTOMER_1986</span>
-              </div>
-            </div>
-            <div class="abap-arrow">↓</div>
-            <div class="abap-layer l4">
-              <div class="abap-lbl">SAP HANA</div>
-              <div class="abap-chips">
-                <span class="abap-chip">SCARR</span>
-                <span class="abap-chip">SPFLI</span>
-                <span class="abap-chip">SFLIGHT</span>
-                <span class="abap-chip">SBOOK</span>
-                <span class="abap-chip">SCUSTOM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. Gesture Music Controller — info left, YT thumbnail right -->
-    <div class="proj-card">
-      <div class="p-info">
-        <div class="p-num">07</div>
         <h3 class="p-title">Gesture Music Controller</h3>
         <p class="p-desc">Real-time mid-air gesture recognition for Spotify control. An ESP32 + IMU sensor streams 6-axis data over serial; Butterworth DSP filters clean the signal before a hybrid ML + physical-polarity classifier achieves 99%+ accuracy. A live 6-panel Matplotlib dashboard shows waveforms, confidence, and Spotify metadata in real time.</p>
         <div class="p-tags">
@@ -700,10 +704,10 @@
       </div>
     </div>
 
-    <!-- 8. Voicebot — info left, wave right -->
+    <!-- 7. Voicebot — info left, wave right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">08</div>
+        <div class="p-num">07</div>
         <h3 class="p-title">Real-Time Voicebot</h3>
         <p class="p-desc">Voice assistant powered by Amazon Nova Sonic via AWS Bedrock's bidirectional streaming API. Features barge-in detection (interrupt mid-response like a real conversation), async tool use for live data lookup, a Streamlit UI, and PyAudio-based I/O with separate 16 kHz input and 24 kHz output streams.</p>
         <div class="p-tags">
@@ -730,10 +734,10 @@
       </div>
     </div>
 
-    <!-- 9. News Video Generator — info left, feed right -->
+    <!-- 8. News Video Generator — info left, feed right -->
     <div class="proj-card">
       <div class="p-info">
-        <div class="p-num">09</div>
+        <div class="p-num">08</div>
         <h3 class="p-title">AI News Video Generator</h3>
         <p class="p-desc">Automated pipeline that scrapes trending articles from BBC and CNN, generates video scripts with GPT, and renders MP4s with AI-generated images and text overlays. Fully customizable video duration, pacing, and content sources — runs end-to-end without human intervention.</p>
         <div class="p-tags">
@@ -770,20 +774,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-<hr />
-
-<!-- ── CERTIFICATIONS ── -->
-<section id="certifications">
-  <p class="label">Credentials</p>
-  <h2 class="h2">Certifications</h2>
-  <div class="certs-grid">
-    <div class="cert"><div class="cert-issuer">Amazon Web Services</div><div class="cert-name">AWS Certified Generative AI Developer Professional</div></div>
-    <div class="cert"><div class="cert-issuer">Amazon Web Services</div><div class="cert-name">AWS Certified ML Engineer Associate (MLA-C01)</div></div>
-    <div class="cert"><div class="cert-issuer">DeepLearning.AI &amp; AWS</div><div class="cert-name">Generative AI with LLMs</div></div>
-    <div class="cert"><div class="cert-issuer">Salesforce</div><div class="cert-name">Certified AI Associate</div></div>
   </div>
 </section>
 
