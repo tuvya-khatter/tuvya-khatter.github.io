@@ -58,8 +58,10 @@
     .proj-card:hover { border-color: var(--dim); }
     .p-info { padding: 34px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); }
     .p-num { font-size: 0.66rem; color: var(--accent); letter-spacing: 2px; margin-bottom: 12px; }
-    .p-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 13px; }
-    .p-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
+    .p-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; }
+    .p-plain { font-size: 0.85rem; color: var(--text); line-height: 1.7; margin-bottom: 16px; padding-left: 13px; border-left: 2px solid var(--accent); }
+    .p-tech-lbl { font-size: 0.56rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-bottom: 7px; }
+    .p-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.8; margin-bottom: 20px; }
     .p-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
     .tag { font-size: 0.64rem; padding: 4px 9px; border: 1px solid var(--border); color: var(--muted); border-radius: 3px; transition: 0.2s; }
     .tag:hover { border-color: var(--accent); color: var(--text); }
@@ -173,9 +175,9 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-name">TUVYA KHATTER</a>
     <ul class="nav-links">
-      <li><a href="index.html">Core</a></li>
+      <li><a href="index.html">About</a></li>
       <li><a href="projects.html" class="active">Projects</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="core.html">Core</a></li>
     </ul>
     <div class="nav-right">
       <button class="nav-ico theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
@@ -189,9 +191,9 @@
 
 <div class="mobile-menu" id="mob">
   <button class="mobile-close" id="mob-close">&#215;</button>
-  <a href="index.html" class="mob-link">Core</a>
+  <a href="index.html" class="mob-link">About</a>
   <a href="projects.html" class="mob-link">Projects</a>
-  <a href="about.html" class="mob-link">About</a>
+  <a href="core.html" class="mob-link">Core</a>
 </div>
 
 <main>
@@ -206,6 +208,8 @@
       <div class="p-info">
         <div class="p-num">01</div>
         <h3 class="p-title">Enterprise Agentic RAG</h3>
+        <p class="p-plain">An AI assistant that answers questions from a company's own documents — and, like a careful researcher, checks and corrects its own answer before replying.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Production-grade agentic RAG reference architecture. A LangGraph pipeline (planner → retriever → synthesizer → critic) with self-correction loops, hybrid retrieval combining pgvector + BM25 + RRF, cross-encoder reranking, OpenTelemetry + Prometheus observability, per-request cost tracking, and full CI/CD with Docker Compose and GitHub Actions.</p>
         <div class="p-tags">
           <span class="tag">LangGraph</span><span class="tag">Amazon Bedrock</span><span class="tag">pgvector</span>
@@ -244,6 +248,8 @@
       <div class="p-info">
         <div class="p-num">02</div>
         <h3 class="p-title">Deep Research Agent</h3>
+        <p class="p-plain">Give it any topic and it researches the web for you — reading multiple sources and writing a clear, cited report, like an automated research assistant.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Interactive CLI research agent built on the Strands Agents SDK and Amazon Bedrock. Runs a multi-tool pipeline — web search, page extraction, and site crawl via Tavily — to synthesize comprehensive, cited Markdown reports. Streaming output, partial-save on interruption, session management, and rotating logs.</p>
         <div class="p-tags">
           <span class="tag">Python</span><span class="tag">Strands Agents SDK</span>
@@ -283,6 +289,8 @@
       <div class="p-info">
         <div class="p-num">03</div>
         <h3 class="p-title">SAP ABAP Flight Booking Platform</h3>
+        <p class="p-plain">The complete behind-the-scenes engine for a flight-booking site — search flights, book a seat, pay, cancel, get a refund, and receive an e-ticket — built on the enterprise software big companies actually run on.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Full-stack flight booking system on SAP ABAP OO / HANA. Facade pattern over 8 domain classes (flight, booking, customer, payment, ticket, validation, cancellation) exposed through 4 REST HTTP handlers. CDS view data access layer over SAP standard flight tables with full booking lifecycle — search, reserve, pay, cancel, refund, and e-ticket generation.</p>
         <div class="p-tags">
           <span class="tag">SAP ABAP OO</span><span class="tag">SAP HANA</span><span class="tag">CDS Views</span>
@@ -340,6 +348,8 @@
       <div class="p-info">
         <div class="p-num">04</div>
         <h3 class="p-title">Mobile Mechanic Platform</h3>
+        <p class="p-plain">A website where customers can check if a mechanic serves their area and book one to come fix their car at home — try the live demo on the right.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Full-stack booking platform for an on-demand mobile mechanic service. Next.js frontend with service area lookup and appointment scheduling, Python backend with Supabase/PostgreSQL, Playwright end-to-end test suite with GitHub Actions CI, deployed on Vercel.</p>
         <div class="p-tags">
           <span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Supabase</span>
@@ -365,6 +375,8 @@
       <div class="p-info">
         <div class="p-num">05</div>
         <h3 class="p-title">AI-Powered SOW Editor</h3>
+        <p class="p-plain">Paste in a meeting transcript and it auto-drafts the project contract, while an AI assistant suggests the rest — you just accept, reject, or edit, then export to Word or PDF.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">React-based Statement of Work editor with real-time Claude AI assistance via AWS Bedrock. Rich text editing with Slate.js, inline AI suggestions, document state management with Zustand, change tracking, undo/redo, and PDF/DOCX export.</p>
         <div class="p-tags">
           <span class="tag">React</span><span class="tag">Slate.js</span><span class="tag">Claude AI</span>
@@ -422,6 +434,8 @@
       <div class="p-info">
         <div class="p-num">06</div>
         <h3 class="p-title">Gesture Music Controller</h3>
+        <p class="p-plain">Wave your hand in the air to control Spotify — skip a song, pause, or change the volume — using a tiny motion sensor and machine learning. Watch the video demo on the right.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Real-time mid-air gesture recognition for Spotify control. An ESP32 + IMU sensor streams 6-axis data over serial; Butterworth DSP filters clean the signal before a hybrid ML + physical-polarity classifier achieves 99%+ accuracy. A live 6-panel Matplotlib dashboard shows waveforms, confidence, and Spotify metadata in real time.</p>
         <div class="p-tags">
           <span class="tag">Python</span><span class="tag">C / ESP-IDF</span><span class="tag">Scikit-learn</span>
@@ -451,6 +465,8 @@
       <div class="p-info">
         <div class="p-num">07</div>
         <h3 class="p-title">Real-Time Voicebot</h3>
+        <p class="p-plain">A voice assistant you can talk to naturally — and even interrupt mid-sentence, just like a real phone conversation, with answers in under half a second.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Voice assistant powered by Amazon Nova Sonic via AWS Bedrock's bidirectional streaming API. Features barge-in detection (interrupt mid-response like a real conversation), async tool use for live data lookup, a Streamlit UI, and PyAudio-based I/O with separate 16 kHz input and 24 kHz output streams.</p>
         <div class="p-tags">
           <span class="tag">Amazon Nova Sonic</span><span class="tag">AWS Bedrock</span>
@@ -481,6 +497,8 @@
       <div class="p-info">
         <div class="p-num">08</div>
         <h3 class="p-title">AI News Video Generator</h3>
+        <p class="p-plain">Automatically turns the day's trending news stories into short narrated videos — writing the script, generating the visuals, and rendering the final clip with no human editing.</p>
+        <div class="p-tech-lbl">Under the hood</div>
         <p class="p-desc">Automated pipeline that scrapes trending articles from BBC and CNN, generates video scripts with GPT, and renders MP4s with AI-generated images and text overlays. Fully customizable video duration, pacing, and content sources — runs end-to-end without human intervention.</p>
         <div class="p-tags">
           <span class="tag">Python</span><span class="tag">OpenAI GPT</span>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tuvya Khatter — About</title>
+  <title>Core — Tuvya Khatter</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet" />
@@ -47,38 +47,21 @@
     .mobile-menu a { font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; }
     .mobile-close { position: absolute; top: 22px; right: 40px; background: none; border: none; color: var(--muted); font-size: 1.6rem; cursor: pointer; }
 
-    main { max-width: 1180px; margin: 0 auto; padding: 130px 44px 60px; }
-    .eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 26px; display: flex; align-items: center; gap: 12px; }
-    .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--dim); }
-    .about-h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; }
-    .about-intro { font-size: 0.92rem; color: var(--muted); line-height: 1.95; max-width: 64ch; margin-bottom: 40px; }
-    .about-intro strong { color: var(--text); font-weight: 500; }
-    .about-cta { display: flex; flex-wrap: wrap; gap: 14px 30px; margin-bottom: 64px; }
-    .about-cta a { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 9px; transition: color 0.2s, gap 0.2s; }
-    .about-cta a .ar { color: var(--accent); }
-    .about-cta a:hover { color: var(--text); gap: 13px; }
+    .core { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; max-width: 1180px; margin: 0 auto; padding: 120px 44px 80px; }
+    .core-eyebrow { font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
+    .core-eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--dim); }
+    .core-h1 { font-size: clamp(2.1rem, 6vw, 4.4rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; max-width: 16ch; margin-bottom: 40px; }
+    .core-h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .core-sub { font-size: clamp(0.82rem, 1.4vw, 0.95rem); color: var(--muted); max-width: 56ch; line-height: 1.9; margin-bottom: 52px; }
+    .core-sub strong { color: var(--text); font-weight: 500; }
+    .arrow-links { display: flex; flex-wrap: wrap; gap: 14px 36px; }
+    .arrow-link { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 9px; transition: color 0.2s, gap 0.2s; }
+    .arrow-link .ar { color: var(--accent); transition: transform 0.2s; }
+    .arrow-link:hover { color: var(--text); gap: 13px; }
+    .blink { display: inline-block; width: 9px; height: 1.1em; background: var(--accent); margin-left: 4px; vertical-align: text-bottom; animation: bl 1.05s step-end infinite; }
+    @keyframes bl { 0%,100%{opacity:1}50%{opacity:0} }
 
-    /* timeline */
-    .tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-    .tl-col-hdr { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text); padding-bottom: 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
-    .tl-col-hdr .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-    .tl-entry { display: flex; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--border); }
-    .tl-mono { width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700; letter-spacing: 1px; color: var(--muted); flex-shrink: 0; margin-top: 2px; transition: border-color 0.2s, color 0.2s; background: var(--panel); }
-    .tl-entry:hover .tl-mono { border-color: var(--accent); color: var(--text); }
-    .tl-body { flex: 1; min-width: 0; }
-    .tl-org { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
-    .tl-role { font-size: 0.78rem; color: var(--accent); margin-bottom: 5px; }
-    .tl-date { font-size: 0.66rem; color: var(--dim); letter-spacing: 1px; margin-bottom: 11px; text-transform: uppercase; }
-    .tl-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.8; }
-    .tl-course { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tl-course span { font-size: 0.66rem; color: var(--muted); border: 1px solid var(--border); border-radius: 2px; padding: 3px 8px; }
-    .tl-projref { margin-top: 14px; padding: 14px 16px; border: 1px dashed var(--border); border-radius: 4px; background: var(--panel); }
-    .tl-projref-lbl { font-size: 0.58rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--dim); margin-bottom: 9px; }
-    .tl-projref a { display: flex; align-items: center; gap: 9px; font-size: 0.8rem; color: var(--muted); padding: 5px 0; transition: color 0.2s, gap 0.2s; }
-    .tl-projref a .ar { color: var(--accent); }
-    .tl-projref a:hover { color: var(--text); gap: 13px; }
-
-    footer { max-width: 1180px; margin: 80px auto 0; padding: 30px 44px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--border); }
+    footer { max-width: 1180px; margin: 0 auto; padding: 30px 44px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--border); }
     footer p { font-size: 0.72rem; color: var(--muted); letter-spacing: 1px; }
     .foot-links { display: flex; gap: 22px; }
     .foot-links a { font-size: 0.72rem; color: var(--muted); letter-spacing: 1px; transition: color 0.2s; }
@@ -88,8 +71,7 @@
       nav { padding: 0 24px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      main { padding: 110px 24px 40px; }
-      .tl-grid { grid-template-columns: 1fr; gap: 48px; }
+      .core { padding: 110px 24px 60px; }
       footer { padding: 24px; }
     }
   </style>
@@ -100,9 +82,9 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-name">TUVYA KHATTER</a>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">About</a></li>
+      <li><a href="index.html">About</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="core.html">Core</a></li>
+      <li><a href="core.html" class="active">Core</a></li>
     </ul>
     <div class="nav-right">
       <button class="nav-ico theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
@@ -121,87 +103,16 @@
   <a href="core.html" class="mob-link">Core</a>
 </div>
 
-<main>
-  <p class="eyebrow">About</p>
-  <h1 class="about-h1">Hey, I'm Tuvya.</h1>
-  <p class="about-intro">I'm a <strong>Computer Science &amp; Mathematics</strong> graduate from UMass Amherst with a minor in Business Administration. I like turning research-grade AI into systems people can actually use — <strong>agentic RAG pipelines</strong>, real-time voicebots, and enterprise GenAI on AWS Bedrock. Below is where I've been, on the industry and academic tracks.</p>
-  <div class="about-cta">
-    <a href="projects.html"><span class="ar">&#8594;</span> See my work</a>
-    <a href="core.html"><span class="ar">&#8594;</span> The short version</a>
-    <a href="https://github.com/tuvya-khatter" target="_blank"><span class="ar">&#8594;</span> GitHub</a>
-  </div>
-
-  <div class="tl-grid">
-
-    <!-- INDUSTRY -->
-    <div>
-      <div class="tl-col-hdr"><span class="dot"></span> Industry</div>
-
-      <div class="tl-entry">
-        <div class="tl-mono">CT</div>
-        <div class="tl-body">
-          <div class="tl-org">Comprinno Technologies</div>
-          <div class="tl-role">AI Intern · AWS Advanced Tier Partner</div>
-          <div class="tl-date">Jun 2025 – Sep 2025</div>
-          <div class="tl-desc">Shipped an agentic Statement-of-Work drafting platform (Claude / Amazon Bedrock + React), cutting client doc prep time by 40%. Deployed a real-time speech-to-speech voicebot (Nova Sonic, FastAPI) at sub-500ms latency, &lt;$0.03/interaction. Authored CloudFormation IaC reducing deploy time from 45 min to &lt;5 min.</div>
-        </div>
-      </div>
-
-      <div class="tl-entry">
-        <div class="tl-mono">LQ</div>
-        <div class="tl-body">
-          <div class="tl-org">Lumiq</div>
-          <div class="tl-role">Data Science Intern · Financial AI</div>
-          <div class="tl-date">Dec 2024 – Mar 2025</div>
-          <div class="tl-desc">Fine-tuned transformer LLMs (Llama, Mistral, Gemma) for transcription and translation, benchmarking post-training quality tradeoffs. Built RAG pipelines with LangChain + LlamaIndex and designed evaluation harnesses across open-source models, delivering Streamlit demos.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ACADEMIC -->
-    <div>
-      <div class="tl-col-hdr"><span class="dot"></span> Academic</div>
-
-      <div class="tl-entry">
-        <div class="tl-mono">UM</div>
-        <div class="tl-body">
-          <div class="tl-org">University of Massachusetts Amherst</div>
-          <div class="tl-role">B.S. Computer Science &amp; Mathematics · Minor in Business</div>
-          <div class="tl-date">Aug 2023 – May 2026</div>
-          <div class="tl-desc">Chancellor's Award merit scholarship ($8,000/semester). Dean's List, GPA 3.76 / 4.0. Manning College of Information &amp; Computer Sciences.</div>
-          <div class="tl-course">
-            <span>Database Systems</span><span>Algorithms</span><span>Machine Learning</span>
-            <span>Operating Systems</span><span>Linear Algebra</span><span>Probability</span><span>Real Analysis</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tl-entry">
-        <div class="tl-mono">TA</div>
-        <div class="tl-body">
-          <div class="tl-org">Database Systems — Teaching Assistant</div>
-          <div class="tl-role">UMass Amherst · CICS</div>
-          <div class="tl-date">2024 – 2025</div>
-          <div class="tl-desc">Led office hours and supported students through relational design, SQL, normalization, and transaction concepts.</div>
-        </div>
-      </div>
-
-      <div class="tl-entry">
-        <div class="tl-mono">AL</div>
-        <div class="tl-body">
-          <div class="tl-org">UMass AI Lab — Research Assistant</div>
-          <div class="tl-role">Transportation Research Group · PI Prof. Chengbo Ai</div>
-          <div class="tl-date">Oct 2025 – May 2026</div>
-          <div class="tl-desc">Built Python pipelines converting raw LiDAR PCAPs into structured 3D point-cloud frames for autonomous-driving perception models. Developed 3D cuboid label-validation tooling on Segments.ai.</div>
-          <div class="tl-projref">
-            <div class="tl-projref-lbl">Related projects</div>
-            <a href="projects.html#mobile-mechanic"><span class="ar">&#8594;</span> Mobile Mechanic Platform</a>
-            <a href="projects.html#gesture-controller"><span class="ar">&#8594;</span> Gesture Music Controller</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<main class="core">
+  <p class="core-eyebrow">AI &amp; Software Engineer</p>
+  <h1 class="core-h1">Building real-world systems with <em>agents</em>, <em>models</em>, and code.<span class="blink"></span></h1>
+  <p class="core-sub">Recent <strong>Computer Science &amp; Mathematics</strong> grad from UMass Amherst. Currently focused on <strong>agentic AI</strong>, RAG systems, and production GenAI on <strong>AWS Bedrock</strong>. Shipped GenAI at two startups; side experiments in hardware ML and full-stack live in projects.</p>
+  <div class="arrow-links">
+    <a href="projects.html" class="arrow-link"><span class="ar">&#8594;</span> Projects</a>
+    <a href="index.html" class="arrow-link"><span class="ar">&#8594;</span> About</a>
+    <a href="https://github.com/tuvya-khatter" target="_blank" class="arrow-link"><span class="ar">&#8594;</span> GitHub</a>
+    <a href="https://linkedin.com/in/tuvyakhatter" target="_blank" class="arrow-link"><span class="ar">&#8594;</span> LinkedIn</a>
+    <a href="mailto:tuvya.khatter@gmail.com" class="arrow-link"><span class="ar">&#8594;</span> Email</a>
   </div>
 </main>
 
